@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Unos</h1>
+<form action="#" th:action="@{/new}" th:object="${jokeForm}" method="post">
+    <p>Enter joke:<input type="text" th:field="*{content}" /></p>
+    <p><input type="submit" value="Submit" th:href="@{/index}" /></p>
+</form>
+</body>
+</html>

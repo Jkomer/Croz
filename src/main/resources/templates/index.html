@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Naslov</title>
+</head>
+<body>
+    <h1>Vicevi</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Content</th>
+            <th>Likes</th>
+            <th>Dislikes</th>
+            <th>Difference</th>
+            <th>+</th>
+            <th>-</th>
+        </tr>
+        </thead>
+        <tbody >
+        <th:block th:each="joke : ${jokeList}">
+            <tr>
+            <td th:text="${joke.id}">id</td>
+            <td th:text="${joke.content}">ovo je neki vic</td>
+            <td th:text="${joke.likes}">... </td>
+            <td th:text="${joke.dislikes}">...</td>
+            <td th:text="${joke.likes}-${joke.dislikes}">...</td>
+
+                <td>
+                    <form th:action="@{/like}" method="post">
+                        <input type="hidden" name="id" th:value="${joke.id}" />
+                        <input type="submit" value="+" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/dislike}" method="post">
+                        <input type="hidden" name="id" th:value="${joke.id}" />
+                        <input type="submit" value="-" />
+                    </form>
+                </td>
+
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+    <form th:action="@{/new}" method="get">
+        <input type="submit" value="Add joke"/>
+    </form>
+</body>
+</html>
